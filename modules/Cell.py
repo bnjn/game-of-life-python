@@ -15,14 +15,37 @@ class Cell():
                 if cell == self:
                     y = grid.index(row)
                     x = row.index(self)
-                    neighbouring_cells = [
-                        row[x + 1], # right
-                        row[x - 1], # left
-                        grid[y + 1][x], # down
-                        grid[y - 1][x], # up
-                        grid[y - 1][x - 1], # up left
-                        grid[y - 1][x + 1], # up right
-                        grid[y + 1][x - 1], # down left
-                        grid[y + 1][x + 1] # down right
-                    ]
+                    neighbouring_cells = []
+                    try:
+                        neighbouring_cells.append(row[x + 1])
+                    except IndexError:
+                        pass
+                    try:
+                        neighbouring_cells.append(row[x - 1])
+                    except IndexError:
+                        pass
+                    try:
+                        neighbouring_cells.append(grid[y + 1][x])
+                    except IndexError:
+                        pass
+                    try:
+                        neighbouring_cells.append(grid[y - 1][x])
+                    except IndexError:
+                        pass
+                    try:
+                        neighbouring_cells.append(grid[y + 1][x + 1])
+                    except IndexError:
+                        pass
+                    try:
+                        neighbouring_cells.append(grid[y - 1][x - 1])
+                    except IndexError:
+                        pass
+                    try:
+                        neighbouring_cells.append(grid[y - 1][x + 1])
+                    except IndexError:
+                        pass
+                    try:
+                        neighbouring_cells.append(grid[y + 1][x - 1])
+                    except IndexError:
+                        pass
                     return len(Counter(neighbouring_cells)) - 1

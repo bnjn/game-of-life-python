@@ -40,5 +40,14 @@ class TestCell(unittest.TestCase):
         ]
         self.assertEqual(new_cell.check_living_neighbours(grid), 4)
 
+    def test_other_edge_living_neighbours(self):
+        new_cell = Cell()
+        grid = [
+            [None, None, Cell()],
+            [new_cell, Cell(), Cell()],
+            [Cell(), Cell(), None]
+        ]
+        self.assertEqual(new_cell.check_living_neighbours(grid), 3)
+
 if __name__ == '__main__':
     unittest.main()
